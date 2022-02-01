@@ -16,8 +16,8 @@ const Resume: NextPage = () => {
         <Image
           src={resume}
           alt="emirhan karahan cv resume"
-          placeholder="blur"
           quality={100}
+          placeholder="blur"
           blurDataURL={rgbDataURL(245, 245, 245)}
         ></Image>
       </section>

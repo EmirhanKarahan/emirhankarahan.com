@@ -5,6 +5,7 @@ import emirhankarahan from "../public/emirhankarahan.png";
 import Transition from "./transition";
 import en from "../locales/en/index";
 import tr from "../locales/tr/index";
+import rgbDataURL from "../utils/rgbDataUrl";
 
 const Header = () => {
   const router = useRouter();
@@ -31,8 +32,10 @@ const Header = () => {
           className="rounded-full"
           width={150}
           height={150}
-          quality={100}
           objectFit="cover"
+          quality={100}
+          placeholder="blur"
+          blurDataURL={rgbDataURL(245, 245, 245)}
         />
         <h1 className="text-2xl font-bold">{t.headerTitle}</h1>
         <h3>{t.headerSubtitle}</h3>
