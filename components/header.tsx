@@ -31,6 +31,7 @@ const Header = () => {
           className="rounded-full"
           width={150}
           height={150}
+          quality={100}
           objectFit="cover"
         />
         <h1 className="text-2xl font-bold">{t.headerTitle}</h1>
