@@ -9,7 +9,11 @@ const BlogPreview = ({ blogPost }: ComponentProps<any>) => {
 
   return (
     <article>
-      <a href="/blogPreviewDeneme" target={"_blank"} rel="noopener noreferrer">
+      <a
+        href="https://medium.com/@emirhankarahan/esp8266-01-firebase-ve-app-inventor-ile-iot-projesi-2ac7f7472a5e"
+        target={"_blank"}
+        rel="noopener noreferrer"
+      >
         <h2 className="text-xl font-bold hover:text-blue-600">
           {blogPost.fields.title}
         </h2>
