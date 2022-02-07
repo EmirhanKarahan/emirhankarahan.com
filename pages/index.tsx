@@ -1,18 +1,18 @@
 import type { GetStaticPropsContext, NextPage } from "next";
 import { createClient } from "contentful";
+import BlogPreview from "../components/blogPreview";
+import { IBlogPost } from "../types/IBlogPost";
+import Layout from "../components/layout";
 
-import BlogPreview from "../components/blog/blogPreview";
-import Transition from "../components/transition";
-
-const Blog: NextPage<any> = ({ blogPosts }) => {
+const HomePage: NextPage<{ blogPosts: IBlogPost[] }> = ({ blogPosts }) => {
   return (
-    <Transition>
+    <Layout>
       <section className="site-container space-y-4">
-        {blogPosts.map((blogPost: any) => (
+        {blogPosts.map((blogPost) => (
           <BlogPreview key={blogPost.sys.id} blogPost={blogPost} />
         ))}
       </section>
-    </Transition>
+    </Layout>
   );
 };
 
@@ -31,7 +31,8 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     props: {
       blogPosts: res.items,
     },
+    revalidate: 600,
   };
 }
 
-export default Blog;
+export default HomePage;

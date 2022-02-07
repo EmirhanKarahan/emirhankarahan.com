@@ -17,10 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="description" content={t.siteDescription} />
       </Head>
       <div className="antialiased text-gray-700">
-        <Header />
-        <main className="mb-20">
-          <Component {...pageProps} />
-        </main>
+        <Component {...pageProps} locale={locale} />
       </div>
     </>
   );
