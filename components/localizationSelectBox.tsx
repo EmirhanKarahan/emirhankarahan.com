@@ -1,15 +1,15 @@
 import { useRouter } from "next/router";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 
 const LocalizationSelectBox: FunctionComponent = () => {
   const router = useRouter();
-  const { locale, pathname } = router;
+  const { locale, asPath } = router;
 
   return (
     <select
       value={locale}
       onChange={(val) => {
-        router.push(pathname, pathname, { locale: val.target.value });
+        router.push(asPath, asPath, { locale: val.target.value });
       }}
       className="absolute right-0 top-0 mt-1 mr-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
     >
