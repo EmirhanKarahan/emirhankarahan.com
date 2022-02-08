@@ -1,3 +1,5 @@
+import { ContentfulCollection, ContentTypeCollection } from "contentful";
+
 export interface Metadata {
   tags: any[];
 }
@@ -47,6 +49,7 @@ export interface Sys {
 export interface Fields {
   title: string;
   subtitle: string;
+  content: any;
 }
 
 export interface IBlogPost {
