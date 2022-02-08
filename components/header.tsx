@@ -31,7 +31,7 @@ const Header: FunctionComponent = () => {
         blurDataURL={rgbDataURL(245, 245, 245)}
       />
       <h1 className="text-2xl font-bold">{t.headerTitle}</h1>
-      <h3>{t.headerSubtitle}</h3>
+      <h3 className="font-normal">{t.headerSubtitle}</h3>
       <div className="flex space-x-2 text-2xl mt-1">
         <a
           href="https://twitter.com/nickekarahan"
