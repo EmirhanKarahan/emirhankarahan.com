@@ -1,17 +1,15 @@
 import { NextPage } from "next";
 import Image from "next/image";
-import Transition from "../components/transition";
-import { useRouter } from "next/router";
+import Layout from "../components/layout";
 import en from "../locales/en/resume.svg";
 import tr from "../locales/tr/resume.svg";
 import rgbDataURL from "../utils/rgbDataUrl";
 
-const Resume: NextPage = () => {
-  const { locale } = useRouter();
+const ResumePage: NextPage<{ locale?: string }> = ({ locale }) => {
   const resume = locale === "en" ? en : tr;
 
   return (
-    <Transition>
+    <Layout>
       <section className="site-container">
         <Image
           src={resume}
@@ -21,8 +19,8 @@ const Resume: NextPage = () => {
           blurDataURL={rgbDataURL(245, 245, 245)}
         ></Image>
       </section>
-    </Transition>
+    </Layout>
   );
 };
 
-export default Resume;
+export default ResumePage;
