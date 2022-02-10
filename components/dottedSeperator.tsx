@@ -5,7 +5,7 @@ const DottedSeperator: FunctionComponent<{ dotNumber?: number }> = ({
 }) => {
   const spanArray = [];
   for (let i = 0; i < dotNumber; i++) {
-    spanArray.push(<span>.</span>);
+    spanArray.push(<span key={i}>.</span>);
   }
 
   return (
