@@ -14,6 +14,7 @@ import { IBlogPost } from "../../types/IBlogPost";
 import Transition from "../../components/transition";
 import MiniHeader from "../../components/miniHeader";
 import rgbDataURL from "../../utils/rgbDataUrl";
+import DottedSeperator from "../../components/dottedSeperator";
 
 const RICHTEXT_OPTIONS: Options = {
   renderNode: {
@@ -56,7 +57,8 @@ const BlogPage: NextPage<{ post: IBlogPost }> = ({ post }) => {
       <main className="site-container mb-20">
         <article>
           <h1 className="text-2xl font-bold">{post.fields.title}</h1>
-          <p className="mb-8">{post.fields.subtitle}</p>
+          <p>{post.fields.subtitle}</p>
+          <DottedSeperator dotNumber={8} />
           {documentToReactComponents(post.fields.content, RICHTEXT_OPTIONS)}
           <hr className="mt-5" />
           <time className="text-gray-400">
@@ -99,11 +101,11 @@ export async function getStaticProps({
     space: process.env.CONTENTFUL_SPACE_ID!,
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
   });
-
   const post = await client.getEntry<IBlogPost>(params!.id as string, {
     locale,
   });
-  return { props: { post } };
+
+  return { props: { post }, revalidate: 600 };
 }
 
 export default BlogPage;
