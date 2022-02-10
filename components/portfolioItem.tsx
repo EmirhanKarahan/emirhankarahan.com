@@ -1,33 +1,49 @@
+import { FunctionComponent } from "react";
 import { FiGithub, FiGlobe } from "react-icons/fi";
+import { IPortfolioItem } from "../types/IPortfolioItem";
+import DottedSeperator from "./dottedSeperator";
+import TagIcon from "./tagIcon";
 
-const PortfolioItem = () => {
+const PortfolioItem: FunctionComponent<{ portfolioItem: IPortfolioItem }> = ({
+  portfolioItem,
+}) => {
   return (
     <article>
-      <h2 className="text-xl font-bold hover:text-blue-600">Project Name</h2>
-      <p>
-        Details Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem
-        ipsum dolor sit amet consectetur, adipisicing elit. Facilis, ullam?
-      </p>
-      <div className="space-x-2 mt-2">
+      <header className="flex align-middle">
+        <h2 className="mr-2 text-xl font-bold hover:text-blue-600">
+          {portfolioItem.fields.name}
+        </h2>
+        <section className="flex space-x-1">
+          {portfolioItem.metadata.tags.map((tag) => (
+            <TagIcon className="m-auto" key={tag.sys.id} tagId={tag.sys.id} />
+          ))}
+        </section>
+      </header>
+
+      <p>{portfolioItem.fields.description}</p>
+
+      <footer className="space-x-2 mt-2">
         <a
-          href=""
+          href={portfolioItem.fields.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="hover:underline"
         >
           <FiGithub className="inline-block mr-1" />
-          EmirhanKarahan/bulog
+          github/{portfolioItem.fields.name}
         </a>
         <a
-          href=""
+          href={portfolioItem.fields.demoUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="hover:underline"
         >
           <FiGlobe className="inline-block mr-1" />
-          bulogapp.herokuapp.com
+          demo/{portfolioItem.fields.name}
         </a>
-      </div>
+      </footer>
+
+      <DottedSeperator />
     </article>
   );
 };
