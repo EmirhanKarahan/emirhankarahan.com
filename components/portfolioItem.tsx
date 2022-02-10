@@ -9,11 +9,11 @@ const PortfolioItem: FunctionComponent<{ portfolioItem: IPortfolioItem }> = ({
 }) => {
   return (
     <article>
-      <header className="flex align-middle">
+      <header className="flex align-middle flex-wrap sm:flex-nowrap">
         <h2 className="mr-2 text-xl font-bold hover:text-blue-600">
           {portfolioItem.fields.name}
         </h2>
-        <section className="flex space-x-1">
+        <section className="flex space-x-1 my-2 sm:my-0">
           {portfolioItem.metadata.tags.map((tag) => (
             <TagIcon className="m-auto" key={tag.sys.id} tagId={tag.sys.id} />
           ))}
@@ -22,7 +22,7 @@ const PortfolioItem: FunctionComponent<{ portfolioItem: IPortfolioItem }> = ({
 
       <p>{portfolioItem.fields.description}</p>
 
-      <footer className="space-x-2 mt-2">
+      <footer className="flex flex-col mt-2 sm:flex-row sm:space-x-2">
         <a
           href={portfolioItem.fields.githubUrl}
           target="_blank"
