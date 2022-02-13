@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { GetStaticPathsContext, GetStaticPropsContext, NextPage } from "next";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -15,6 +16,8 @@ import Transition from "../../components/transition";
 import MiniHeader from "../../components/miniHeader";
 import rgbDataURL from "../../utils/rgbDataUrl";
 import DottedSeperator from "../../components/dottedSeperator";
+import CommentForm from "../../components/commentForm";
+import Comments from "../../components/comments";
 
 const RICHTEXT_OPTIONS: Options = {
   renderNode: {
@@ -49,13 +52,39 @@ const RICHTEXT_OPTIONS: Options = {
 
 const BlogPage: NextPage<{ post: IBlogPost }> = ({ post }) => {
   let { locale } = useRouter();
+  const [text, setText] = useState("");
+  const [comments, setComments] = useState([]);
   const dateLocale = locale === "en" ? enUS : tr;
+
+  const onSubmit = async (e: any) => {
+    e.preventDefault();
+    await fetch("/api/comment/postComment", {
+      method: "POST",
+      body: JSON.stringify({ blogId: post.sys.id, text }),
+    });
+    fetchComments();
+    setText("");
+  };
+
+  const fetchComments = async () => {
+    const query = new URLSearchParams({ blogId: post.sys.id });
+    const blogId = `/api/comment/getComments?${query.toString()}`;
+    const response = await fetch(blogId, {
+      method: "GET",
+    });
+    const data = await response.json();
+    setComments(data);
+  };
+
+  useEffect(() => {
+    fetchComments();
+  }, []);
 
   return (
     <Transition>
       <MiniHeader />
       <main className="site-container mb-20">
-        <article>
+        <article className="whitespace-pre-wrap">
           <h1 className="text-2xl font-bold">{post.fields.title}</h1>
           <p>{post.fields.subtitle}</p>
           <DottedSeperator dotNumber={8} />
@@ -67,6 +96,8 @@ const BlogPage: NextPage<{ post: IBlogPost }> = ({ post }) => {
             })}
           </time>
         </article>
+        <CommentForm onSubmit={onSubmit} text={text} setText={setText} />
+        <Comments comments={comments} />
       </main>
     </Transition>
   );
