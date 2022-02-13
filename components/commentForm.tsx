@@ -23,17 +23,20 @@ export default function CommentForm({ onSubmit, text, setText }: any) {
             <div className="flex items-center">
               <Image
                 src={user.picture as string}
+                alt={user.name as string}
                 width={30}
                 height={30}
                 className="rounded-full"
               />
             </div>
             <span>{user.name}</span>
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a href="/api/auth/logout" typeof="button">
               <FiLogOut color="orangered" className="hover:scale-125" />
             </a>
           </div>
         ) : (
+          /* eslint-disable-next-line @next/next/no-html-link-for-pages */
           <a
             className="bg-blue-600 text-white px-2 py-1 rounded hover:scale-110"
             href="/api/auth/login"
