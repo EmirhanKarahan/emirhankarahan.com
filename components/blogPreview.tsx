@@ -19,7 +19,7 @@ const BlogPreview: FunctionComponent<{ blogPost: IBlogPost }> = ({
             {blogPost.fields.title}
           </h2>
           <p>{blogPost.fields.subtitle}</p>
-          <div className="text-gray-400">
+          <div className="text-gray-500">
             <time>
               {format(new Date(blogPost.sys.createdAt), "MMM dd, yyyy", {
                 locale: dateLocale,

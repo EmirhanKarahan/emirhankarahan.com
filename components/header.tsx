@@ -31,11 +31,12 @@ const Header: FunctionComponent = () => {
         blurDataURL={rgbDataURL(245, 245, 245)}
       />
       <h1 className="text-2xl font-bold">{t.headerTitle}</h1>
-      <h3 className="font-normal">{t.headerSubtitle}</h3>
+      <h2 className="font-normal">{t.headerSubtitle}</h2>
       <div className="flex space-x-2 text-2xl mt-1">
         <a
           href="https://twitter.com/nickekarahan"
           className="text-blue-400 hover:-translate-y-1"
+          aria-label="Twitter"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -44,6 +45,7 @@ const Header: FunctionComponent = () => {
         <a
           href="https://github.com/emirhankarahan"
           className="hover:-translate-y-1"
+          aria-label="Github"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -52,6 +54,7 @@ const Header: FunctionComponent = () => {
         <a
           href="https://www.linkedin.com/in/emirhankarahan/"
           className="text-blue-700 hover:-translate-y-1"
+          aria-label="Linkedin"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -60,6 +63,7 @@ const Header: FunctionComponent = () => {
         <a
           href="https://superpeer.com/emirhankarahan"
           className="hover:-translate-y-1"
+          aria-label="Superpeer"
           target="_blank"
           rel="noopener noreferrer"
         >
