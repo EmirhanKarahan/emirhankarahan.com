@@ -6,7 +6,11 @@ const nextConfig = {
   },
   reactStrictMode: true,
   images: {
-    domains: ["picsum.photos", "images.ctfassets.net"],
+    domains: [
+      "picsum.photos",
+      "images.ctfassets.net",
+      "lh3.googleusercontent.com",
+    ],
   },
 };
 

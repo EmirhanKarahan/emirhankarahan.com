@@ -2,8 +2,6 @@ import { createClient } from "contentful";
 import { GetStaticPropsContext, NextPage } from "next";
 import Layout from "../components/layout";
 import PortfolioItem from "../components/portfolioItem";
-import en from "../locales/en/portfolio";
-import tr from "../locales/tr/portfolio";
 import { IPortfolioItem } from "../types/IPortfolioItem";
 
 const PortfolioPage: NextPage<{
