@@ -5,7 +5,7 @@ export default {
   navBlog: "Blog",
   navResume: "Resume",
   navPortfolio: "Porfolio",
-  headerTitle: "I'm Emirhan KARAHAN",
+  headerTitle: "It's Emirhan KARAHAN",
   headerSubtitle: "Software Engineering Candidate",
   headerDescription:
     "Trying to specialized in front-end. With the help of modern technologies, i build web and mobile apps which users enjoy.",
