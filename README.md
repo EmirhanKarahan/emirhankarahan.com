@@ -1,4 +1,4 @@
-the repository of my website
+the repository of my website - 
 tech stack; nextjs, typescript, contentful, auth0, redis
 
 #### Getting Started
@@ -18,4 +18,16 @@ yarn dev
 
 #### Contentful Content Types
 
-will be updated
+|BlogPost| | | | 
+|--|--|--|--|
+| Title | Short text | localized | required |
+| Subtitle | Short text | localized | required
+| Content | Rich text |  localized | required
+
+-----
+|PortfolioItem| | | | 
+|--|--|--|--|--|
+| Name | Short text | localized | required 
+| Description | Short text | localized | required
+| Github URL | Short text | match as URL | required
+| Demo URL | Short text | match as URL  | required
