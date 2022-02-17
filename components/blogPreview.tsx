@@ -12,10 +12,10 @@ const BlogPreview: FunctionComponent<{ blogPost: IBlogPost }> = ({
   const dateLocale = locale === "en" ? enUS : tr;
 
   return (
-    <article>
+    <article className="group">
       <Link href={`/blog/${blogPost.sys.id}`} locale={locale}>
         <a>
-          <h2 className="text-xl font-bold hover:text-blue-600">
+          <h2 className="text-xl font-bold group-hover:text-blue-600">
             {blogPost.fields.title}
           </h2>
           <p>{blogPost.fields.subtitle}</p>

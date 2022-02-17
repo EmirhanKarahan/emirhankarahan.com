@@ -10,9 +10,7 @@ const PortfolioItem: FunctionComponent<{ portfolioItem: IPortfolioItem }> = ({
   return (
     <article>
       <header className="flex align-middle flex-wrap sm:flex-nowrap">
-        <h2 className="mr-2 text-xl font-bold hover:text-blue-600">
-          {portfolioItem.fields.name}
-        </h2>
+        <h2 className="mr-2 text-xl font-bold">{portfolioItem.fields.name}</h2>
         <section className="flex space-x-1 my-2 sm:my-0">
           {portfolioItem.metadata.tags.map((tag) => (
             <TagIcon className="m-auto" key={tag.sys.id} tagId={tag.sys.id} />
