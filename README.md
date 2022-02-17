@@ -21,13 +21,13 @@ yarn dev
 |BlogPost| | | | 
 |--|--|--|--|
 | Title | Short text | localized | required |
-| Subtitle | Short text | localized | required
-| Content | Rich text |  localized | required
+| Subtitle | Short text | localized | required  |
+| Content | Rich text |  localized | required  |
 
 -----
 |PortfolioItem| | | | 
-|--|--|--|--|--|
-| Name | Short text | localized | required 
-| Description | Short text | localized | required
-| Github URL | Short text | match as URL | required
-| Demo URL | Short text | match as URL  | required
+|--|--|--|--|
+| Name | Short text | localized | required  |
+| Description | Short text | localized | required |
+| Github URL | Short text | match as URL | required |
+| Demo URL | Short text | match as URL  | required |
