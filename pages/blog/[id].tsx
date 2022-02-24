@@ -35,10 +35,9 @@ const RICHTEXT_OPTIONS: Options = {
       return (
         <Image
           src={`https:${node.data.target.fields.file.url}`}
-          alt={""}
-          width={400}
-          height={300}
-          objectFit="cover"
+          alt={node.data.target.fields.description}
+          width={node.data.target.fields.file.details.image.width}
+          height={node.data.target.fields.file.details.image.height}
           placeholder="blur"
           blurDataURL={rgbDataURL(245, 245, 245)}
         />
