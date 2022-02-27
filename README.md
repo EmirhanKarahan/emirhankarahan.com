@@ -1,5 +1,6 @@
 the repository of my website - 
 tech stack; nextjs, typescript, contentful, auth0, redis
+demo: emirhankarahan.vercel.app
 
 #### Getting Started
 
