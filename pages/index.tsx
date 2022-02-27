@@ -25,6 +25,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const res = await client.getEntries({
     content_type: "blogPost",
     locale: context.locale,
+    order: "-sys.createdAt",
   });
 
   return {
