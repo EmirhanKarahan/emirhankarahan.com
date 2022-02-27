@@ -1,6 +1,7 @@
 the repository of my website - 
-tech stack; nextjs, typescript, contentful, auth0, redis
-demo: emirhankarahan.vercel.app
+tech stack; nextjs, typescript, contentful, auth0, redis 
+
+demo: https://emirhankarahan.vercel.app
 
 #### Getting Started
 
@@ -32,3 +33,4 @@ yarn dev
 | Description | Short text | localized | required |
 | Github URL | Short text | match as URL | required |
 | Demo URL | Short text | match as URL  | required |
+
