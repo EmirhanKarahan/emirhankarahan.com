@@ -18,6 +18,7 @@ import rgbDataURL from "../../utils/rgbDataUrl";
 import DottedSeperator from "../../components/dottedSeperator";
 import CommentForm from "../../components/commentForm";
 import Comments from "../../components/comments";
+import Head from "next/head";
 
 const RICHTEXT_OPTIONS: Options = {
   renderNode: {
@@ -80,25 +81,38 @@ const BlogPage: NextPage<{ post: IBlogPost }> = ({ post }) => {
   }, []);
 
   return (
-    <Transition>
-      <MiniHeader />
-      <main className="site-container mb-20">
-        <article className="whitespace-pre-wrap">
-          <h1 className="text-2xl font-bold">{post.fields.title}</h1>
-          <p>{post.fields.subtitle}</p>
-          <DottedSeperator dotNumber={8} />
-          {documentToReactComponents(post.fields.content, RICHTEXT_OPTIONS)}
-          <hr className="mt-5" />
-          <time className="text-gray-400">
-            {format(new Date(post.sys.createdAt), "MMM dd, yyyy", {
-              locale: dateLocale,
-            })}
-          </time>
-        </article>
-        <CommentForm onSubmit={onSubmit} text={text} setText={setText} />
-        <Comments comments={comments} />
-      </main>
-    </Transition>
+    <>
+      <Head>
+        <title>Emirhan KARAHAN - {post.fields.title}</title>
+        <meta name="description" content={post.fields.subtitle} />
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:title"
+          content={"Emirhan KARAHAN - " + post.fields.title}
+        />
+        <meta property="og:description" content={post.fields.subtitle} />
+        <meta property="og:site_name" content="emirhankarahan.com" />
+      </Head>
+      <Transition>
+        <MiniHeader />
+        <main className="site-container mb-20">
+          <article className="whitespace-pre-wrap">
+            <h1 className="text-2xl font-bold">{post.fields.title}</h1>
+            <p>{post.fields.subtitle}</p>
+            <DottedSeperator dotNumber={8} />
+            {documentToReactComponents(post.fields.content, RICHTEXT_OPTIONS)}
+            <hr className="mt-5" />
+            <time className="text-gray-400">
+              {format(new Date(post.sys.createdAt), "MMM dd, yyyy", {
+                locale: dateLocale,
+              })}
+            </time>
+          </article>
+          <CommentForm onSubmit={onSubmit} text={text} setText={setText} />
+          <Comments comments={comments} />
+        </main>
+      </Transition>
+    </>
   );
 };
 
