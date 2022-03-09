@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { GetStaticPathsContext, GetStaticPropsContext, NextPage } from "next";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import Image from "next/image";
 import { createClient } from "contentful";
 import {
   documentToReactComponents,
   Options,
 } from "@contentful/rich-text-react-renderer";
-import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 import { format } from "date-fns";
 import { tr, enUS } from "date-fns/locale";
 
@@ -18,9 +19,15 @@ import rgbDataURL from "../../utils/rgbDataUrl";
 import DottedSeperator from "../../components/dottedSeperator";
 import CommentForm from "../../components/commentForm";
 import Comments from "../../components/comments";
-import Head from "next/head";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import vs2015 from "react-syntax-highlighter/dist/cjs/styles/hljs/vs2015";
 
 const RICHTEXT_OPTIONS: Options = {
+  renderMark: {
+    [MARKS.CODE]: (code) => (
+      <SyntaxHighlighter style={vs2015}>{code}</SyntaxHighlighter>
+    ),
+  },
   renderNode: {
     [INLINES.HYPERLINK]: (node, children) => (
       <a
