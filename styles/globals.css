@@ -28,8 +28,8 @@
   ol {
     @apply list-decimal pl-5;
   }
-  code {
-    @apply inline-block bg-slate-600 text-white p-2 rounded-md;
+  pre {
+    @apply rounded-md;
   }
   blockquote {
     @apply indent-5 bg-gray-100 inline-block p-2 rounded-md;
