@@ -34,6 +34,12 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>{t.siteTitle}</title>
         <meta name="description" content={t.siteDescription} />
+        <meta
+          name="keywords"
+          content="emirhankarahan.com, emirhankarahan, frontend, emirhankarahan web sitesi"
+        />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.emirhankarahan.com" />
       </Head>
       <div className="antialiased text-gray-700">
         <UserProvider>
