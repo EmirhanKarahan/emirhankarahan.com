@@ -5,7 +5,7 @@ const HeaderIcons = () => {
   return (
     <div className="flex space-x-2 text-2xl mt-1">
       <a
-        href="https://twitter.com/nickekarahan"
+        href="https://twitter.com/emirhankarahan_"
         className="text-blue-400 hover:-translate-y-1"
         aria-label="Twitter"
         target="_blank"
