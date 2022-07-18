@@ -13,11 +13,32 @@
   html {
     scroll-behavior: smooth;
   }
+  h1 {
+    @apply text-2xl font-bold;
+  }
+  h2 {
+    @apply text-xl font-bold;
+  }
+  h3 {
+    @apply text-lg font-bold;
+  }
+  h4 {
+    @apply font-bold;
+  }
+  ol {
+    @apply list-decimal pl-5;
+  }
+  pre {
+    @apply rounded-md;
+  }
+  blockquote {
+    @apply indent-5 bg-gray-100 inline-block p-2 rounded-md;
+  }
 }
 
 @layer components {
   .site-container {
-    @apply max-w-2xl mx-auto px-6;
+    @apply max-w-2xl mx-auto px-2 md:px-6;
   }
   .site-4xl-container {
     @apply max-w-4xl mx-auto;

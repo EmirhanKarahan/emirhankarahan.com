@@ -1,18 +1,42 @@
-import { NextPage } from "next";
-import Transition from "../components/transition";
-import en from "../locales/en/portfolio";
-import tr from "../locales/tr/portfolio";
-import { useRouter } from "next/router";
+import { createClient } from "contentful";
+import { GetStaticPropsContext, NextPage } from "next";
+import Layout from "../components/layout";
+import PortfolioItem from "../components/portfolioItem";
+import { IPortfolioItem } from "../types/IPortfolioItem";
 
-const Portfolio: NextPage = () => {
-  const { locale } = useRouter();
-  const t = locale === "en" ? en : tr;
-
+const PortfolioPage: NextPage<{
+  portfolioItems: IPortfolioItem[];
+}> = ({ portfolioItems }) => {
   return (
-    <Transition>
-      <div className="site-container space-y-4">{t.portfolio}</div>
-    </Transition>
+    <Layout>
+      <section className="site-container space-y-4">
+        {portfolioItems.map((portfolioItem) => (
+          <PortfolioItem
+            key={portfolioItem.sys.id}
+            portfolioItem={portfolioItem}
+          />
+        ))}
+      </section>
+    </Layout>
   );
 };
 
-export default Portfolio;
+export async function getStaticProps(context: GetStaticPropsContext) {
+  const client = createClient({
+    space: process.env.CONTENTFUL_SPACE_ID!,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
+  });
+
+  const res = await client.getEntries({
+    content_type: "portfolioItem",
+    locale: context.locale,
+  });
+
+  return {
+    props: {
+      portfolioItems: res.items,
+    },
+    revalidate: 600,
+  };
+}
+export default PortfolioPage;
