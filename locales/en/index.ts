@@ -6,7 +6,7 @@ export default {
   navResume: "Resume",
   navPortfolio: "Porfolio",
   headerTitle: "It's Emirhan KARAHAN",
-  headerSubtitle: "Software Engineering Candidate",
+  headerSubtitle: "iOS Developer",
   headerDescription:
     "Trying to specialized in IOS development. With the help of modern technologies, i build web and mobile apps which users enjoy.",
 };

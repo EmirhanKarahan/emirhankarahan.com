@@ -41,16 +41,14 @@ const Header: FunctionComponent = () => {
             {t.navBlog}
           </a>
         </Link>
-        <Link href="/portfolio">
+        {/* <Link href="/portfolio">
           <a className={`${pathname == "/portfolio" ? "text-blue-600" : ""}`}>
             {t.navPortfolio}
           </a>
-        </Link>
-        <Link href="/resume">
-          <a className={`${pathname == "/resume" ? "text-blue-600" : ""}`}>
-            {t.navResume}
-          </a>
-        </Link>
+        </Link> */}
+        <a href="/resume.pdf" target={"_blank"}>
+          {t.navResume}
+        </a>
       </nav>
     </header>
   );
