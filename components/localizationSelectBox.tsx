@@ -11,7 +11,8 @@ const LocalizationSelectBox: FunctionComponent = () => {
       onChange={(val) => {
         router.push(asPath, asPath, { locale: val.target.value });
       }}
-      className="absolute right-0 top-0 mt-1 mr-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+      className="absolute right-0 top-0 mt-1 mr-1 focus:ring-0 rounded-md border-transparent 
+      bg-gray-300 dark:bg-gray-600 "
     >
       <option value="tr">tr</option>
       <option value="en">en</option>

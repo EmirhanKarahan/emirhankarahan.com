@@ -40,8 +40,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.emirhankarahan.com" />
+        <link rel="shortcut icon" href="favicon.svg" type="image/x-icon" />
       </Head>
-      <div className="antialiased text-gray-700">
+      <div className="antialiased">
         <UserProvider>
           <Component {...pageProps} locale={locale} />
         </UserProvider>

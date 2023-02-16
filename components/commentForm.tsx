@@ -10,7 +10,7 @@ export default function CommentForm({ onSubmit, text, setText }: any) {
       <textarea
         name="comment-message"
         rows={2}
-        className="border border-gray-300 rounded w-full block px-2 py-1"
+        className="border border-gray-300 rounded w-full block px-2 py-1 text-gray-700"
         onChange={(e) => setText(e.target.value)}
         value={text}
       />
