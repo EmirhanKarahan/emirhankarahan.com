@@ -39,4 +39,5 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     revalidate: 600,
   };
 }
+
 export default PortfolioPage;
