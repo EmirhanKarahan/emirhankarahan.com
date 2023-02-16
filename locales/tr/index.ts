@@ -6,7 +6,7 @@ export default {
   navResume: "Özgeçmiş",
   navPortfolio: "Porfolio",
   headerTitle: "Ben Emirhan KARAHAN",
-  headerSubtitle: "Yazılım Mühendisi Adayı",
+  headerSubtitle: "iOS Geliştirici",
   headerDescription:
     "IOS geliştirme alanında uzmanlaşmaya çalışıyorum. Güncel teknolojileri kullanarak, kullanıcıların deneyimlerken keyif alacağı web ve mobil uygulamalar geliştiriyorum.",
 };
