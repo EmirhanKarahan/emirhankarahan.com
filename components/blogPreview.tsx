@@ -13,21 +13,25 @@ const BlogPreview: FunctionComponent<{ blogPost: IBlogPost }> = ({
 
   return (
     <article className="group">
-      <Link href={`/blog/${blogPost.sys.id}`} locale={locale}>
+      <a
+        target={"_blank"}
+        href={`http://blog.emirhankarahan.com/${blogPost.slug}`}
+        rel="noreferrer"
+      >
         <a>
           <h2 className="text-xl font-bold group-hover:text-blue-600">
-            {blogPost.fields.title}
+            {blogPost.title}
           </h2>
-          <p>{blogPost.fields.subtitle}</p>
+          <p>{blogPost.brief}</p>
           <div className="text-gray-500">
             <time>
-              {format(new Date(blogPost.sys.createdAt), "MMM dd, yyyy", {
+              {format(new Date(blogPost.dateUpdated), "MMM dd, yyyy", {
                 locale: dateLocale,
               })}
             </time>
           </div>
         </a>
-      </Link>
+      </a>
     </article>
   );
 };
