@@ -19,9 +19,10 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const headers = {
     "content-type": "application/json",
   };
+
   const requestBody = {
     query: `{
-      user(username: "emirhankarahan") {
+      user(username: ${process.env.HASHNODE_USERNAME}) {
         publication {
           posts {
            slug
@@ -38,13 +39,17 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     headers,
     body: JSON.stringify(requestBody),
   };
-  const response = await (
-    await fetch("https://api.hashnode.com/", options)
-  ).json();
+
+  let response = null;
+  try {
+    response = await (await fetch("https://api.hashnode.com/", options)).json();
+  } catch (err) {
+    console.log("ERROR DURING FETCH REQUEST", err);
+  }
 
   return {
     props: {
-      blogPosts: response?.data?.user?.publication?.posts,
+      blogPosts: response?.data?.user?.publication?.posts ?? [],
     },
     revalidate: 900,
   };
