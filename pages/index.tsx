@@ -22,7 +22,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
   const requestBody = {
     query: `{
-      user(username: ${process.env.HASHNODE_USERNAME}) {
+      user(username: "${process.env.HASHNODE_USERNAME}") {
         publication {
           posts {
            slug
@@ -44,6 +44,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   try {
     response = await (await fetch("https://api.hashnode.com/", options)).json();
   } catch (err) {
+    console.log("emir", requestBody);
     console.log("ERROR DURING FETCH REQUEST", err);
   }
 
