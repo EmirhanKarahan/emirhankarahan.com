@@ -15,15 +15,16 @@ const Header: FunctionComponent = () => {
   const t = locale === "en" ? en : tr;
 
   return (
-    <header className="relative site-container py-6">
+    <header className="relative site-container py-4">
       <LocalizationSelectBox />
       <Image
         alt="emirhan karahan"
         src={emirhankarahan}
         className="rounded-full"
         width={150}
-        height={150}
-        objectFit="cover"
+        style={{
+          objectFit: "cover",
+        }}
         quality={100}
         placeholder="blur"
         blurDataURL={rgbDataURL(245, 245, 245)}
@@ -35,21 +36,11 @@ const Header: FunctionComponent = () => {
       <span className="font-semibold tracking-wide">
         emirhan.karahan@outlook.com
       </span>
-      <nav className="text-lg underline mt-5 space-x-2">
-        <Link href="/">
-          <a className={`${pathname == "/" ? "text-blue-600" : ""}`}>
-            {t.navBlog}
-          </a>
-        </Link>
-        {/* <Link href="/portfolio">
-          <a className={`${pathname == "/portfolio" ? "text-blue-600" : ""}`}>
-            {t.navPortfolio}
-          </a>
-        </Link> */}
-        <a href="/resume.pdf" target={"_blank"}>
-          {t.navResume}
-        </a>
-      </nav>
+      <h2 className="text-2xl mt-12 space-x-2">
+      <span className="font-bold underline">
+        {t.navBlog}
+      </span>
+      </h2>
     </header>
   );
 };

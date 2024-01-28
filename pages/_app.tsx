@@ -4,7 +4,6 @@ import Head from "next/head";
 import tr from "../locales/tr";
 import en from "../locales/en";
 import { useRouter } from "next/router";
-import { UserProvider } from "@auth0/nextjs-auth0";
 import Script from "next/script";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -43,9 +42,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="shortcut icon" href="favicon.svg" type="image/x-icon" />
       </Head>
       <div className="antialiased">
-        <UserProvider>
           <Component {...pageProps} locale={locale} />
-        </UserProvider>
       </div>
     </>
   );

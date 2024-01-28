@@ -1,6 +1,6 @@
 import type { GetStaticPropsContext, NextPage } from "next";
 import BlogPreview from "../components/blogPreview";
-import { IBlogPost } from "../types/IBlogPost";
+import { Edge, IBlogPost } from "../types/IBlogPost";
 import Layout from "../components/layout";
 
 const HomePage: NextPage<{ blogPosts: IBlogPost[] }> = ({ blogPosts }) => {
@@ -20,37 +20,40 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     "content-type": "application/json",
   };
 
-  const requestBody = {
-    query: `{
-      user(username: "${process.env.HASHNODE_USERNAME}") {
-        publication {
-          posts {
-           slug
-           title
-           brief
-           dateUpdated
+  const query = `{
+    publication(host:"blog.emirhankarahan.com") {
+      posts (first:10){
+        edges{
+          node {
+            title,
+            brief,
+            url,
+            slug,
+            publishedAt
           }
         }
       }
-    }`,
-  };
+      }
+    }`;
+
   const options = {
     method: "POST",
     headers,
-    body: JSON.stringify(requestBody),
+    body: JSON.stringify({ query }),
   };
 
   let response = null;
   try {
-    response = await (await fetch("https://api.hashnode.com/", options)).json();
+    response = await (await fetch("https://gql.hashnode.com/", options)).json();
   } catch (err) {
-    console.log("emir", requestBody);
     console.log("ERROR DURING FETCH REQUEST", err);
   }
 
   return {
     props: {
-      blogPosts: response?.data?.user?.publication?.posts ?? [],
+      blogPosts: response?.data?.publication?.posts?.edges?.map((edge: Edge) => {
+        return  { title: edge.node.title, slug: edge.node.slug, brief: edge.node.brief, url: edge.node.url, publishedAt: edge.node.publishedAt }
+      }) ?? [],
     },
     revalidate: 900,
   };
