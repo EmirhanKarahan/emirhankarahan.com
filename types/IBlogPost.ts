@@ -1,22 +1,27 @@
 export interface Root {
-  data: Data;
+  data: Data
 }
 
 export interface Data {
-  user: User;
-}
-
-export interface User {
-  publication: Publication;
+  publication: Publication
 }
 
 export interface Publication {
-  posts: IBlogPost[];
+  posts: Posts
+}
+
+export interface Posts {
+  edges: Edge[]
+}
+
+export interface Edge {
+  node: IBlogPost
 }
 
 export interface IBlogPost {
-  slug: string;
-  title: string;
-  brief: string;
-  dateUpdated: string;
+  title: string
+  brief: string
+  url: string
+  slug: string
+  publishedAt: string
 }
