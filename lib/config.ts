@@ -167,6 +167,16 @@ export const fathomConfig = fathomId
     }
   : undefined
 
+export const firebaseConfig = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: 'emirhankarahancom.firebaseapp.com',
+  projectId: 'emirhankarahancom',
+  storageBucket: 'emirhankarahancom.appspot.com',
+  messagingSenderId: '166759555337',
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: 'G-2MWT5XX9J5'
+}
+
 export const posthogId = process.env.NEXT_PUBLIC_POSTHOG_ID
 export const posthogConfig: Partial<PostHogConfig> = {
   api_host: 'https://app.posthog.com'
