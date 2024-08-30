@@ -1,3 +1,11 @@
+// global styles shared across the entire site
+import * as React from 'react'
+import type { AppProps } from 'next/app'
+import { useRouter } from 'next/router'
+
+import * as Fathom from 'fathom-client'
+import { getAnalytics } from 'firebase/analytics'
+import { initializeApp } from 'firebase/app'
 // used for rendering equations (optional)
 import 'katex/dist/katex.min.css'
 // used for code syntax highlighting (optional)
@@ -13,29 +21,22 @@ import 'styles/notion.css'
 // global style overrides for prism theme (optional)
 import 'styles/prism-theme.css'
 
-import type { AppProps } from 'next/app'
-import * as Fathom from 'fathom-client'
-import { useRouter } from 'next/router'
-import posthog from 'posthog-js'
-import * as React from 'react'
-
-import { bootstrap } from '@/lib/bootstrap-client'
 import {
   fathomConfig,
   fathomId,
-  isServer,
+  firebaseConfig,
   posthogConfig,
   posthogId
 } from '@/lib/config'
-
-if (!isServer) {
-  bootstrap()
-}
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   React.useEffect(() => {
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig)
+    getAnalytics(app)
+
     function onRouteChangeComplete() {
       if (fathomId) {
         Fathom.trackPageview()
