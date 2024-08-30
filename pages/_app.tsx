@@ -1,7 +1,6 @@
 // global styles shared across the entire site
 import * as React from 'react'
 import type { AppProps } from 'next/app'
-import { useRouter } from 'next/router'
 
 import { getAnalytics } from 'firebase/analytics'
 import { initializeApp } from 'firebase/app'
@@ -22,21 +21,11 @@ import 'styles/prism-theme.css'
 import { firebaseConfig } from '@/lib/config'
 
 export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter()
-
   React.useEffect(() => {
     // Initialize Firebase
     const app = initializeApp(firebaseConfig)
     getAnalytics(app)
-
-    function onRouteChangeComplete() {}
-
-    router.events.on('routeChangeComplete', onRouteChangeComplete)
-
-    return () => {
-      router.events.off('routeChangeComplete', onRouteChangeComplete)
-    }
-  }, [router.events])
+  }, []) // Boş dependency array, bu effect'in sadece bir kez çalışmasını sağlar
 
   return <Component {...pageProps} />
 }
